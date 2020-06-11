@@ -1,6 +1,7 @@
 import java.util.HashSet;
 import java.util.Hashtable;
-import java.util.concurrent.PriorityBlockingQueue;
+import java.util.PriorityQueue;
+//import java.util.concurrent.PriorityBlockingQueue;
 
 
 /**
@@ -25,12 +26,12 @@ A*(Node start, Vector Goals)
 public class A_STAR extends Algorithem {
 
 	private State root;
-	private PriorityBlockingQueue<State> priorityQueue ;
+	private PriorityQueue<State> priorityQueue ;
 	private HashSet<Integer> closeList;
 	private Hashtable<Integer , State> openList;
 	private Operator oprate;
 
-	public A_STAR() {priorityQueue = new PriorityBlockingQueue<>(11, new StateComparator());}
+	public A_STAR() {priorityQueue = new PriorityQueue<>(new StateComparator());}
 
 
 	@Override

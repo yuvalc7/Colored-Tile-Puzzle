@@ -1,7 +1,8 @@
 
 import java.util.Hashtable;
+import java.util.PriorityQueue;
 import java.util.Stack;
-import java.util.concurrent.PriorityBlockingQueue;
+
 
 
 /**
@@ -42,7 +43,7 @@ public class DFBnB extends Algorithem{
 	private Operator oprate;
 	private boolean getGoal;
 	private Stack<State> finalChildToInsert;
-	private PriorityBlockingQueue<State> priorityQueueForChild ;
+	private PriorityQueue<State> priorityQueueForChild ;
 	private State currentGoal;
 
 	public DFBnB() {
@@ -58,7 +59,7 @@ public class DFBnB extends Algorithem{
 		oprate = new Operator(super.getColor());
 		getGoal = false;
 		stack = new Stack<>(); 
-		priorityQueueForChild = new PriorityBlockingQueue<>(11 , new StateComparator());
+		priorityQueueForChild = new PriorityQueue<>(new StateComparator());
 		finalChildToInsert = new Stack<State>();
 		currentGoal = new State(initialState.getRow(),initialState.getColumn());
 	}

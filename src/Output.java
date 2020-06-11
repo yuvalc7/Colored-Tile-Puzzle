@@ -15,7 +15,7 @@ public class Output {
     String Num = "Num : " + algo.getNum();
     String Cost = "Cost : " + algo.getTotalPrice();
     if(algo.getTotalPrice() > 0 && algo.isExistPath()) {
-    writer.write(Path + "\n" + Num + "\n" + Cost + "\n" + InputReder.Time + "\n");
+    writer.write(Path + "\n" + Num + "\n" + Cost + "\n" + algo.getTime() + "\n");
     }
     else if(algo.isExistPath()) {writer.write("the initial State is the Goal" + "\n" + Num);}
     else {

@@ -82,7 +82,7 @@ public class A_STAR extends Algorithem {
 					}
 				}
 			}
-			if(InputReder.openList) {super.printOpenList(openList.values());}
+			if(super.IsOpenList()) {super.printOpenList(openList.values());}
 		}
 		if(priorityQueue.isEmpty()) {
 			super.setExistPath();

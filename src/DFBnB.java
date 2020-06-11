@@ -132,7 +132,7 @@ public class DFBnB extends Algorithem{
 				}
 				
 			}
-			if(InputReder.openList) {super.printOpenList(openList.values());}
+			if(super.IsOpenList()) {super.printOpenList(openList.values());}
 		}
 		if(currentGoal.getParent() != null) {
 		super.StringPath(currentGoal);

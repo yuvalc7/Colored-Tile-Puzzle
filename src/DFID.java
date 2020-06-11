@@ -103,7 +103,7 @@ public class DFID extends Algorithem{
 					
 				}
 			}
-			if(InputReder.openList) {super.printOpenList(openList.values());}
+			if(super.IsOpenList()) {super.printOpenList(openList.values());}
 			hashCode = state.get_hashCode();
 			openList.remove(hashCode);
 			if(isCutOof) {

@@ -15,10 +15,20 @@ public abstract class Algorithem {
 	public int Num = 0;
 	private int totalPrice = 0;
 	private double second = 0;
+	private boolean IsOpenList = true;
 	private Color color;
     private int [][] Goal;
+    private String Time = "";
    
 	
+	public String getTime() {
+		return Time;
+	}
+
+	public void setTime(String time) {
+		Time = time;
+	}
+
 	public abstract void runAlgorithem();
 	
 	public abstract void setAlgorithem(State initialState);
@@ -31,6 +41,15 @@ public abstract class Algorithem {
 		this.color = color;
 	}
 
+
+	public boolean IsOpenList() {
+		return IsOpenList;
+	}
+
+	public void setIsOpenList(boolean isOpenList) {
+		IsOpenList = isOpenList;
+	}
+	
 	public boolean isExistPath() {
 		return existPath;
 	}

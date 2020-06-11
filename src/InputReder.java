@@ -7,20 +7,16 @@ import java.io.IOException;
 
 public class InputReder {
 
-	private final String [] TIME = {"no time","with time"};
-	private final String [] OPENLIST = {"no open" , "with open"};
-	//private Tiles initial_board_tiles;
 	private  boolean [] setColorforvalues;
 	private  State InitialState;
 	private  Algorithem algorithem;
 	private String path;
 	private Color color; 
-	public static boolean openList = true;
-	private static boolean time = true;
+	private boolean time = true;
 	private static long StartTime , EndTime;
 	private String [] splitCurrentLine;
 	private String currentLine;
-	public static String Time; 
+	public String Time = ""; 
 	
 	
 	//constructor
@@ -39,10 +35,10 @@ public class InputReder {
 				setAlgorithem(currentLine);
 				break;	
 			case 2: // with or without time
-				if(TIME[0] == currentLine) {time = false;}
+				if(currentLine.equals("no time")) {time = false;}
 				break;
 			case 3: // with or without open list
-				if(OPENLIST[0] == currentLine) {openList = false;}
+				if(currentLine.equals("no open")) {this.algorithem.setIsOpenList(false);}
 				break;	
 			case 4: // size of board
 				setSizeofBoard();
@@ -64,7 +60,7 @@ public class InputReder {
 		reader.close();
 	}
 	
-
+	
 	private void setSizeofBoard() {
 		splitCurrentLine = currentLine.split("x");
 		int row = Integer.parseInt(splitCurrentLine[0]);
@@ -156,11 +152,11 @@ public class InputReder {
 		algorithem.runAlgorithem();
 	} 
 
-	public  void stopTime() {
+    public  void stopTime() {
 		EndTime = System.nanoTime();
-		Time  = "";
 		if(time) {
 			Time = Double.toString((double)((EndTime - StartTime)/1_000_000_000.0)).substring(0,5);
+			this.algorithem.setTime(Time);
 		}
 	}
 

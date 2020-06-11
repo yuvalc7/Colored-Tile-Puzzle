@@ -68,7 +68,9 @@ public class BFS extends Algorithem{
 					}
 				}
 			}
-			if(InputReder.openList) {super.printOpenList(OpenList.values());}
+			if(super.IsOpenList()) {
+				super.printOpenList(OpenList.values());
+				}
 		}
 		if(queue.isEmpty()) {// no path found
 		super.setExistPath();

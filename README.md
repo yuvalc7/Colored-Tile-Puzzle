@@ -4,7 +4,7 @@ implement the Tile Puzzle solving using BFS,DFID,A*,IDA*,DFBnB algorithms.
 Unlike the usual game where each sliding "cost" one ,
 in this game each sliding "cost" is depend on the color of the block.
 
-##### there are 3 possible colors for each block:
+### there are 3 possible colors for each block:
 
 black - Can't move at all
 

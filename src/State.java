@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 
-public class State {
+public class State  {
     private State Parent;
 	private int [][] currentState;
 	private int row , column;
@@ -93,11 +93,20 @@ public class State {
     	}
     
     public void set_HashCode() {
-    	 //hashCode = 0;
-    	for(int i = 0; i < row ; i++) {
-    		hashCode += Arrays.hashCode(currentState[i]);
-    	}
+    	hashCode = 0;
+    	hashCode = Arrays.hashCode(makeToArray());
     } 
+    
+    public int[] makeToArray() {
+    	int [] arr = new int[this.row*this.column];
+    	int count = 0;
+    	for (int i = 0; i < this.row; i++) {
+			for (int j = 0; j < this.column; j++) {
+				arr[count++] = this.currentState[i][j];
+			}
+		}
+    	return arr;
+    }
     
     public int get_hashCode() {
     	return hashCode;

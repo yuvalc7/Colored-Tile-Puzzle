@@ -13,7 +13,7 @@ public class InputReder {
 	private String path;
 	private Color color; 
 	private boolean time = true;
-	private static long StartTime , EndTime;
+	private long StartTime , EndTime;
 	private String [] splitCurrentLine;
 	private String currentLine;
 	public String Time = ""; 
@@ -29,7 +29,7 @@ public class InputReder {
 		BufferedReader reader = new BufferedReader(new FileReader(inputFile));
 		int numberLine = 1 ;
 		while((currentLine = reader.readLine()) != null) {
-			currentLine.strip();
+			currentLine = currentLine.trim();
 			switch (numberLine) {
 			case 1: // name of algorithm 
 				setAlgorithem(currentLine);
@@ -73,7 +73,7 @@ public class InputReder {
 	
 	private void setRedOrBlackColor(String currentLine , int color ) {
 		currentLine = (currentLine.substring(currentLine.indexOf(':') + 1) != null) ? currentLine.substring(currentLine.indexOf(':') + 1) : "";
-		currentLine = currentLine.strip();
+		currentLine = currentLine.trim();
 		if(!currentLine.isEmpty()) { 
 			splitCurrentLine = (currentLine.contains(",")) ? currentLine.split(",") : currentLine.split(" ");
 			setColor( color , splitCurrentLine );
@@ -146,6 +146,7 @@ public class InputReder {
      * set color and tile to algorithm , start time and run the algorithm
      */
 	public void setStartime() {
+		InitialState.set_HashCode();
 		algorithem.setColor(color);
 		StartTime = System.nanoTime();
 		algorithem.setAlgorithem(InitialState);

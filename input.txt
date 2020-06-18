@@ -1,9 +1,9 @@
-A*
+IDA*
 with time
-with open
+no open
 3x4
-Black:
-Red: 11
+Black:11
+Red:1,2
 1,2,3,4
 5,6,11,7
 9,10,8,_

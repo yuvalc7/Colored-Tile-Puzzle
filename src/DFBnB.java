@@ -1,40 +1,11 @@
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.PriorityQueue;
 import java.util.Stack;
 
-
-
-/**
- * ------------------------------Pseudo code------------------------------ 
- * DFBnB(Node start, Vector Goals)
-1. L <- make_stack(start) and H <- make_hash_table(start)
-2. result <- null, t <- ∞ // should be set to a strict upper bound in an infinite graph
-3. While L is not empty
-	1. n <- L.remove_front()
-	2. If n is marked as “out”
-		1. H.remove(n)
-	3. Else
-		1. mark n as “out” and L.insert(n)
-		2. N <- apply all of the allowed operators on n
-		3. sort the nodes in N according to their f values (increasing order)
-		4. For each node g from N according to the order of N
-			1. If f(g) >= t
-				1. remove g and all the nodes after it from N
-			2. Else If H contains g’=g and g’ is marked as “out”
-				1. remove g from N
-			3. Else If H contains g’=g and g’ is not marked as “out”
-				1. If f(g’)<=f(g)
-					1. remove g from N
-				2. Else
-					1. remove g’ from L and from H
-			4. Else If goal(g) // if we reached here, f(g) < t
-				1. t <- f(g)
-				2. result <- path(g) // all the “out” nodes in L
-				3. remove g and all the nodes after it from N
-		5. insert N in a reverse order to L and H
-4. Return result
- */
 public class DFBnB extends Algorithem{
 
 	private Hashtable<Integer, State> openList;
@@ -91,47 +62,55 @@ public class DFBnB extends Algorithem{
 						this.priorityQueueForChild.add(child);
 					}
 				}
-				while(!this.priorityQueueForChild.isEmpty()) {
-					State child = this.priorityQueueForChild.poll();
+				Iterator<State> it  = this.priorityQueueForChild.iterator();
+				boolean continue_ = true;
+			
+				while (it.hasNext()&& continue_){
+					State child = it.next();
 					hashCode = child.get_hashCode();
 					boolean addToFinalStack = true;
 					if(child.getF() >= thresHold) {
 						addToFinalStack = false;
-						this.priorityQueueForChild.clear();
+						continue_ = false;
+						break;
 					}
-					else if(openList.contains(hashCode)) {
+					else if(openList.containsKey(hashCode)) {
 						State g_tag = openList.get(hashCode);
 						if(!g_tag.isOut()) {//case 2 : next state is on the stack
-							if(g_tag.getF() > child.getF()) {
+							if(g_tag.getF() <= child.getF()) {
+								//continue;
+								addToFinalStack = false;
+								continue;
+							}else {//no need to switch
 								openList.remove(hashCode);
 								stack.remove(g_tag);
-							}else {//no need to switch
-								addToFinalStack = false;
 							}
 						}else {//case 1 : next state is already on the path
 							addToFinalStack = false;
+							continue;
 						}
 					}
 
 					else if(super.comperTo(child.getCurrentState(), super.getGoal())) {
 						thresHold = child.getF();
-						this.priorityQueueForChild.clear();
+						//this.priorityQueueForChild.clear();
+						continue_ = false;
 						currentGoal = child;
 						addToFinalStack = false;
-					}
-					
+					}			
 					if(addToFinalStack) {
 						finalChildToInsert.add(child);
 					}
+					
 				}
+				priorityQueueForChild.clear();
 				//add to stack
 				while(!finalChildToInsert.isEmpty()) {
 					current = finalChildToInsert.pop(); 
 					hashCode = current.get_hashCode();
 					this.stack.add(current);
 					this.openList.put(hashCode, current);
-				}
-				
+				}	
 			}
 			if(super.IsOpenList()) {super.printOpenList(openList.values());}
 		}
@@ -149,4 +128,5 @@ public class DFBnB extends Algorithem{
 		else
 			return (n * factorial(n-1));
 	} 
+
 }

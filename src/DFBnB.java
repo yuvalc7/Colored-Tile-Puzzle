@@ -48,10 +48,13 @@ public class DFBnB extends Algorithem{
 			State current = stack.pop();
 			int hashCode = current.get_hashCode();
 			if(current.isOut()) {
+			
 				openList.remove(hashCode);
+				
 			}
 			else {
 				current.setOut(true);
+				stack.add(current);
 				boolean [] move = oprate.allowOperator(current);
 				//sorted child Node according to f values
 				for(int i = 0 ; i < 4 ; i++) {

@@ -26,7 +26,7 @@ public class DFID extends Algorithem{
 	public void runAlgorithem() {
 		super.Num++;
 		for(int depth = 1 ; depth < Integer.MAX_VALUE ; depth++) {
-			boolean ans = LimitedDfs(this.root ,depth,0);  // gets Path
+		    LimitedDfs(this.root ,depth,0);  // gets Path
 		    //System.out.println(super.Num);
 			if(isCutOof) {
 				continue;

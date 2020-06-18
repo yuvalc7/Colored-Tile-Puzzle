@@ -1,8 +1,8 @@
-DFBnB
+BFS
 with time
 no open
 2x2
 Black:
 Red:
-1,_
-2,3
+2,1
+3,_

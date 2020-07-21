@@ -5,7 +5,7 @@ public class Ex1 {
 
 	public static void main(String[] args) throws IOException {
 
-		InputReder input = new InputReder("input1.txt");
+		InputReder input = new InputReder("input.txt");
 		Output output = new Output("output.txt");
 		input.Read();
 		input.setStartime();

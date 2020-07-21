@@ -31,6 +31,7 @@ public class IDA_STAR extends Algorithem {
 		super.Num++;
 		while(thresHold != Integer.MAX_VALUE && !getGoal) {
 			int minF = Integer.MAX_VALUE;
+		    this.root.setOut(false);
 			stack.add(this.root);
 			int hashCode = this.root.get_hashCode();
 			openList.put(hashCode, this.root);
@@ -42,6 +43,7 @@ public class IDA_STAR extends Algorithem {
 				}
 				else {
 					current.setOut(true);
+					stack.add(current);
 					boolean [] move = oprate.allowOperator(current);
 					for(int i = 0 ; i < 4 ; i++) {
 						if(move[i]) {
@@ -69,10 +71,9 @@ public class IDA_STAR extends Algorithem {
 								getGoal = true;
 								break;
 							}
-							else {
-								openList.put(hashCode, child);
-								stack.add(child);
-							}
+							openList.put(hashCode, child);
+							stack.add(child);
+
 						}
 					}
 				}

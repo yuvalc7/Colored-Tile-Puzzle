@@ -32,6 +32,7 @@ public class DFID extends Algorithem{
 				continue;
 			}
 			else {
+				if(!getGoal) {super.setExistPath();}
 				break;
 			}	
 		}	
@@ -83,8 +84,6 @@ public class DFID extends Algorithem{
 			if(isCutOof) {
 				return true;
 			}
-			// no path
-			super.setExistPath();
 			return false;
 		}
 	}

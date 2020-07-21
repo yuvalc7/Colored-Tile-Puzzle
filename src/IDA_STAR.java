@@ -31,7 +31,7 @@ public class IDA_STAR extends Algorithem {
 		super.Num++;
 		while(thresHold != Integer.MAX_VALUE && !getGoal) {
 			int minF = Integer.MAX_VALUE;
-		    this.root.setOut(false);
+		        this.root.setOut(false);
 			stack.add(this.root);
 			int hashCode = this.root.get_hashCode();
 			openList.put(hashCode, this.root);
